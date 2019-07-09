@@ -7,38 +7,12 @@
 ;;(package-initialize)
 ;; just for setup our own source
 
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (package-initialize)
-  (setq package-archives '(("gnu" . "http://elpa.emacs-china.org/gnu/")
-				   ("melpa" . "http://elpa.emacs-china.org/melpa/")))
-  )
+;;config for ringbell shutdown
+(setq ring-bell-function 'ignore)
 
-(require 'cl)
+(add-to-list 'load-path "~/.emacs.d/lisp/")
 
-(defvar my/packages '(
-		      company
-		      monokai-theme
-		      hungry-delete
-		      swiper
-		      counsel
-		      smartparens
-
-			  ) "Default packages")
-
-(setq package-selected-packages my/packages)
-
-(defun my/packages-installed-p ()
-  (loop for pkg in my/packages
-	when (not (package-installed-p pkg)) do (return nil)
-	finally (return t)))
-
-(unless (my/packages-installed-p)
-  (message "%s" "Refreshing package database....")
-  (package-refresh-contents)
-  (dolist (pkg my/packages)
-    (when (not (package-installed-p pkg))
-      (package-install pkg))))
+(require 'init-packages)
 
 
 (tool-bar-mode -1)
@@ -59,7 +33,6 @@
 
 (global-set-key (kbd "<f4>") 'open-my-init-file)
 
-(global-company-mode t)
 
 (setq-default cursor-type 'bar)
 ; set the cursor type
@@ -88,16 +61,9 @@
 (setenv "PATH" (concat "usr/local/smlnj/bin:" (getenv "PATH")))
 (setq exec-path (cons "usr/local/smlnj/bin" exec-path))
 
-(load-theme 'monokai t)
 
-;; config for hungry-delete
-(require 'hungry-delete)
-(global-hungry-delete-mode)
 
-;; config for swiper
-(ivy-mode 1)
-(setq ivy-use-virtual-buffers t)
-(setq enable-recursive-minibuffers t)
+
 ;; enable this if you want `swiper' to use it
 ;; (setq search-default-mode #'char-fold-to-regexp)
 (global-set-key "\C-s" 'swiper)
@@ -108,15 +74,15 @@
 (global-set-key (kbd "C-h f") 'counsel-describe-function)
 (global-set-key (kbd "C-h v") 'counsel-describe-variable)
 
-;; config for smartparens
-(require 'smartparens-config)
-;; config smartparens only for emacs-lisp
-;;(add-hook 'emacs-lisp-mode-hook #'smartparens-mode)
-;; config smartparens globally
-(smartparens-global-mode t)
-
+;; config for org agenda
 (setq org-agenda-files '("~/org"))
 (global-set-key (kbd "C-c a") 'org-agenda)
+
+;; config for abbrevmode
+(abbrev-mode t)
+(define-abbrev-table 'global-abbrev-table '(
+					    ("he" "hexiaochuan")
+					    ))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
