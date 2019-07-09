@@ -15,6 +15,7 @@
 		      counsel
 		      smartparens
 		      popwin
+		      reveal-in-osx-finder
 
 			  ) "Default packages")
 

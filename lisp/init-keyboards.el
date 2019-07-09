@@ -23,4 +23,7 @@
 ;; config for git, p for project, f for find file
 (global-set-key (kbd "C-c p f") 'counsel-git)
 
+;; config for revel-in-osx-finder
+(global-set-key (kbd "C-c v i") 'reveal-in-osx-finder)
+
 (provide 'init-keyboards)

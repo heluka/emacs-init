@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ counsel-git
  smartparens-mode
  info
  org-mode
  emacs-lisp-mode
  customize-group
  cd
- 5x5
 )
 
 ;; ----- smex-data -----
@@ -17,4 +17,5 @@
  (smartparens-mode . 2)
  (org-mode . 1)
  (info . 1)
+ (counsel-git . 2)
 )
