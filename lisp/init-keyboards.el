@@ -1,0 +1,26 @@
+(defun open-my-init-file ()
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+
+(global-set-key (kbd "<f4>") 'open-my-init-file)
+
+(defun open-my-gtd-file ()
+  (interactive)
+  (find-file "~/org/gtd.org"))
+
+(global-set-key (kbd "<f5>") 'open-my-gtd-file)
+
+;; enable this if you want `swiper' to use it
+;; (setq search-default-mode #'char-fold-to-regexp)
+(global-set-key "\C-s" 'swiper)
+(global-set-key (kbd "C-c C-r") 'ivy-resume)
+(global-set-key (kbd "<f6>") 'ivy-resume)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "C-h f") 'counsel-describe-function)
+(global-set-key (kbd "C-h v") 'counsel-describe-variable)
+
+;; config for git, p for project, f for find file
+(global-set-key (kbd "C-c p f") 'counsel-git)
+
+(provide 'init-keyboards)
